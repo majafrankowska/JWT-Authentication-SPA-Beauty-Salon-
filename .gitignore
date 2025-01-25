@@ -398,3 +398,9 @@ FodyWeavers.xsd
 
 # JetBrains Rider
 *.sln.iml
+
+# Ignore MacOS system files
+.DS_Store
+
+# Ignore node modules in backend folder
+backend/node_modules/
