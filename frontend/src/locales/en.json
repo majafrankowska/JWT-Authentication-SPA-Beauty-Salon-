@@ -1,0 +1,83 @@
+{
+    "welcome": "Welcome to our salon!",
+    "login": {
+        "title": "Login",
+        "identifier": "Email or Username",
+        "password": "Password",
+        "submit": "Log In",
+        "unknownRole": "Unknown user role",
+        "noRole": "User role not found",
+        "loginError": "Login error: {{message}}",
+        "response": "Login Response:",
+        "role": "User Role:",
+        "invalidData": "Invalid data"
+    },
+    "register": "Register",
+    "address": "Address",
+    "phone": "Phone",
+    "email": "Email",
+    "password": "Password",
+    "confirmPassword": "Confirm Password",
+    "registerButton": "Register",
+    "loginButton": "Log In",
+    "logoutButton": "Log Out",
+    "submit": "Submit",
+    "logout": "Log Out",
+    "profile": "Profile",
+    "services": "Services",
+    "employees": "Employees",
+    "appointments": "Appointments",
+    "about": "About",
+    "contact": "Contact",
+    "home": "Home",
+    "name": "Name",
+    "description": "Description",
+    "price": "Price",
+    "duration": "Duration",
+    "minutes": "minutes",
+    "employee": "Employee",
+    "date": "Date",
+    "time": "Time",
+    "aboutUs": "About Us",
+    "aboutUsDescription": "Our salon offers a wide range of beauty services, such as manicure, pedicure, facial treatments, and haircuts. We care about your beauty and comfort.",
+    "servicesOffered": "Services Offered",
+    "appointmentInfo": "You can book an appointment after logging in.",
+    "servicesList": [
+        {
+            "id": 1,
+            "name": "Manicure",
+            "price": "50.00",
+            "duration": 60,
+            "description": "Professional manicure to make your hands look great"
+        },
+        {
+            "id": 2,
+            "name": "Pedicure",
+            "price": "70.00",
+            "duration": 90,
+            "description": "Relaxing pedicure with foot massage"
+        },
+        {
+            "id": 3,
+            "name": "Facial",
+            "price": "100.00",
+            "duration": 75,
+            "description": "Rejuvenating facial for glowing skin"
+        },
+        {
+            "id": 6,
+            "name": "Haircut",
+            "price": "120.00",
+            "duration": 60,
+            "description": "Simple haircut"
+        },
+        {
+            "id": 7,
+            "name": "Children's haircut",
+            "price": "50.00",
+            "duration": 30,
+            "description": "Haircut for children under 12 years old"
+        }
+    ]
+
+}

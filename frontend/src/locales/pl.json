@@ -1,0 +1,83 @@
+{
+    "welcome": "Witamy w naszym salonie!",
+    "login": {
+        "title": "Logowanie",
+        "identifier": "Email lub nazwa użytkownika",
+        "password": "Hasło",
+        "submit": "Zaloguj się",
+        "unknownRole": "Nieznana rola użytkownika",
+        "noRole": "Nie znaleziono roli użytkownika",
+        "loginError": "Błąd logowania: {{message}}",
+        "response": "Odpowiedź logowania:",
+        "role": "Rola użytkownika:",
+        "invalidData": "Nieprawidłowe dane"
+    },
+    "register": "Zarejestruj się",
+    "address": "Adres",
+    "phone": "Telefon",
+    "email": "Email",
+    "password": "Hasło",
+    "confirmPassword": "Potwierdź hasło",
+    "registerButton": "Zarejestruj się",
+    "loginButton": "Zaloguj się",
+    "logoutButton": "Wyloguj się",
+    "submit": "Wyślij",
+    "logout": "Wyloguj się",
+    "profile": "Profil",
+    "services": "Usługi",
+    "employees": "Pracownicy",
+    "appointments": "Wizyty",
+    "about": "O nas",
+    "contact": "Kontakt",
+    "home": "Strona główna",
+    "name": "Nazwa",
+    "description": "Opis",
+    "price": "Cena",
+    "duration": "Czas trwania",
+    "minutes": "minut",
+    "employee": "Pracownik",
+    "date": "Data",
+    "time": "Godzina",
+    "aboutUs": "O nas",
+    "aboutUsDescription": "Nasz salon oferuje szeroki wachlarz usług kosmetycznych, takich jak manicure, pedicure, zabiegi na twarz i strzyżenie. Dbamy o Twoje piękno i komfort.",
+    "servicesOffered": "Oferowane usługi",
+    "appointmentInfo": "Możesz zarezerwować wizytę po zalogowaniu.",
+    "servicesList": [
+        {
+            "id": 1,
+            "name": "Manicure",
+            "price": "50.00",
+            "duration": 60,
+            "description": "Profesjonalny manicure, który sprawi, że Twoje dłonie będą wyglądać pięknie"
+        },
+        {
+            "id": 2,
+            "name": "Pedicure",
+            "price": "70.00",
+            "duration": 90,
+            "description": "Relaksujący pedicure z masażem stóp"
+        },
+        {
+            "id": 3,
+            "name": "Zabieg na twarz",
+            "price": "100.00",
+            "duration": 75,
+            "description": "Odmładzający zabieg na twarz, który nadaje skórze blasku"
+        },
+        {
+            "id": 6,
+            "name": "Strzyżenie",
+            "price": "120.00",
+            "duration": 60,
+            "description": "Proste strzyżenie"
+        },
+        {
+            "id": 7,
+            "name": "Strzyżenie dzieci",
+            "price": "50.00",
+            "duration": 30,
+            "description": "Strzyżenie dzieci do lat 12"
+        }
+    ]
+
+}
