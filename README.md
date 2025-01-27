@@ -3,10 +3,6 @@
 ## Overview
 JWT-Authentication-SPA-Beauty-Salon is a comprehensive web application for managing beauty salon operations. It provides functionality for user authentication, client and employee management, appointment scheduling, and service assignments using JSON Web Token (JWT) for secure authentication. Made as a final project for TIN subject at PJATK.
 
-| ![](https://github.com/user-attachments/assets/544154eb-e307-4d78-97c7-361bd2adc2fd) | ![](https://github.com/user-attachments/assets/149843d8-c682-4854-83ff-3f17e6cd9497) |
-|:--:|:--:|
-<br>
-
 ## Features
 - **User Authentication:** Register and log in users with JWT-based authentication.
 - **Role-Based Access:** Separate panels for admin, clients, and employees.
@@ -161,12 +157,13 @@ Example request:
 
 ### Client Panel
 
-<img width="1438" alt="Screenshot 2025-01-25 at 19 21 55" src="https://github.com/user-attachments/assets/64167a75-e033-48e1-b903-55b42c3aa69d" />
+| ![](https://github.com/user-attachments/assets/64167a75-e033-48e1-b903-55b42c3aa69d) | ![](https://github.com/user-attachments/assets/64167a75-e033-48e1-b903-55b42c3aa69d) |
+|:--:|:--:|
 
 ### Employee Panel
-<img width="1438" alt="Screenshot 2025-01-25 at 19 22 24" src="https://github.com/user-attachments/assets/149843d8-c682-4854-83ff-3f17e6cd9497" />
 
-
+| ![](https://github.com/user-attachments/assets/247be9cf-52d7-4fbd-9f41-98972ce9adb3) | ![](https://github.com/user-attachments/assets/149843d8-c682-4854-83ff-3f17e6cd9497) |
+|:--:|:--:|
 
 ### Admin Panel
 <img width="1440" alt="Screenshot 2025-01-25 at 19 22 55" src="https://github.com/user-attachments/assets/d5eda492-00a5-4688-9b6c-4715683b0e3c" />
