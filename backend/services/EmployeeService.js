@@ -12,7 +12,7 @@ class EmployeeService {
     }
 
     static async getAllEmployees(user, page, limit) {
-        this._checkAccess(user, ["admin"]);
+        this._checkAccess(user, ["admin", "employee", "client"]);
 
         const offset = (page - 1) * limit;
         const query = `SELECT * FROM employees LIMIT ? OFFSET ?`;
@@ -38,6 +38,20 @@ class EmployeeService {
         }
         return employee;
     }
+
+    static async getEmployeeByUserId(user, userId) {
+        if (user.role !== "admin" && user.userId !== parseInt(userId, 10)) {
+            throw new UnauthorizedError("You can only view your own data.");
+        }
+
+        const employee = await EmployeeRepository.getEmployeeByUserId(userId);
+        if (!employee) {
+            throw new NotFoundError("Employee not found.");
+        }
+
+        return employee;
+    }
+
 
     static async createEmployee(user, data) {
         this._checkAccess(user, ["admin"]);
@@ -68,47 +82,3 @@ class EmployeeService {
 module.exports = EmployeeService;
 
 
-
-
-
-//     static async getEmployeeById(user, id) {
-//         if (user.role !== "admin" && user.userId !== id) {
-//             throw new UnauthorizedError("You can only access your own profile.");
-//         }
-
-//         const employee = await EmployeeRepository.getEmployeeById(id);
-//         if (!employee) {
-//             throw new NotFoundError("Employee not found");
-//         }
-//         return employee;
-//     }
-
-//     static async createEmployee(user, data) {
-//         this._checkAccess(user, ["admin"]);
-//         return await EmployeeRepository.createEmployee(data);
-//     }
-
-//     static async updateEmployee(user, id, data) {
-//         if (user.role !== "admin" && user.userId !== id) {
-//             throw new UnauthorizedError("You can only update your own profile.");
-//         }
-
-//         const updated = await EmployeeRepository.updateEmployee(id, data);
-//         if (!updated) {
-//             throw new NotFoundError("Employee not found or not updated");
-//         }
-//         return updated;
-//     }
-
-//     static async deleteEmployee(user, id) {
-//         this._checkAccess(user, ["admin"]);
-
-//         const deleted = await EmployeeRepository.deleteEmployee(id);
-//         if (!deleted) {
-//             throw new NotFoundError("Employee not found");
-//         }
-//         return { message: "Employee deleted successfully" };
-//     }
-// }
-
-// module.exports = EmployeeService;

@@ -51,8 +51,6 @@ exports.login = async (req, res, next) => {
 };
 
 
-
-
 exports.logout = async (req, res, next) => {
   const { identifier, refreshToken } = req.body;
   console.log("Logout Request:", { identifier, refreshToken }); 

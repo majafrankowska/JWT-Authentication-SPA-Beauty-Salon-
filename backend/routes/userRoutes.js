@@ -10,9 +10,4 @@ router.get("/:id", authenticateToken, UserController.show);
 router.put("/:id", authenticateToken, UserController.update);
 router.delete("/:id", authenticateToken, UserController.delete);
 
-
-// router.put("/:username", authenticateToken, UserController.update); 
-// router.delete("/:username", authenticateToken, UserController.delete); 
-// router.get("/:username", authenticateToken, UserController.show); 
-
 module.exports = router;

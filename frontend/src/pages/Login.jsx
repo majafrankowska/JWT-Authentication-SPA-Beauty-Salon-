@@ -18,24 +18,6 @@ const Login = () => {
         try {
             const response = await loginUser(values);
             console.log('login.response', response);
-
-            // if (response.role) {
-            //     console.log(t('login.role'), response.role);
-
-            //     switch (response.role) {
-            //         case "admin":
-            //             navigate("/adminpanel");
-            //             break;
-            //         case "employee":
-            //             navigate("/employeepanel");
-            //             break;
-            //         case "client":
-            //             navigate("/clientpanel");
-            //             break;
-            //         default:
-            //             alert(t('login.unknownRole'));
-            //     }
-
             if (response.role) {
                 localStorage.setItem('role', response.role);
                 localStorage.setItem('userId', response.userId);

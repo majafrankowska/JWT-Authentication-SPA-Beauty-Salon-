@@ -2,32 +2,7 @@ const ServiceService = require("../services/ServiceService");
 const ServiceDto = require("../dtos/ServiceDto");
 
 class ServiceController {
-    // static async index(req, res, next) {
-    //     const { page = 1, limit = 20 } = req.query;
-
-    //     try {
-    //         const { services, totalPages } = await ServiceService.getAllServices(req.user, page, limit);
-    //         const serviceDtos = services.map((service) => new ServiceDto(service));
-    //         res.status(200).json({ services: serviceDtos, totalPages });
-    //     } catch (err) {
-    //         next(err);
-    //     }
-    // }
-
-    // static async show(req, res, next) {
-    //     try {
-    //         const { id } = req.params;
-    //         const service = await ServiceService.getServiceById(req.user, id);
-    //         if (!service) {
-    //             return res.status(404).json({ message: "Service not found" });
-    //         }
-    //         res.status(200).json(new ServiceDto(service));
-    //     } catch (err) {
-    //         next(err);
-    //     }
-    // }
-
-    static async getAll(req, res, next) {
+static async getAll(req, res, next) {
         const { page = 1, limit = 20 } = req.query;
 
         try {

@@ -39,7 +39,6 @@ const EmployeeList = () => {
             <Box textAlign="center" my={5}>
                 <Typography variant="h4" color="primary">Zarządzanie Pracownikami</Typography>
                 <Typography variant="body1" mb={4}>Przeglądaj, edytuj i usuwaj pracowników salonu.</Typography>
-                {/* <Button variant="contained" color="primary" onClick={() => setOpen(true)}>Dodaj Pracownika</Button> */}
             </Box>
 
             <TableContainer component={Paper}>

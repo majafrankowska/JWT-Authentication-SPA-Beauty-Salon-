@@ -46,9 +46,13 @@ class AppointmentController {
     static async getByEmployee(req, res, next) {
         try {
             const employeeId = parseInt(req.params.employeeId);
+            console.log("Requesting client appointments for:", employeeId);
+            console.log("Authenticated user:", req.user);
+
             const appointments = await AppointmentService.getAppointmentsByEmployee(req.user, employeeId);
             res.status(200).json({ appointments });
         } catch (err) {
+            console.error("Error in getByEmployee:", err.message);
             next(err);
         }
     }
@@ -91,30 +95,3 @@ class AppointmentController {
 }
 
 module.exports = AppointmentController;
-
-
-
-// static async index(req, res, next) {
-//     const { page = 1, limit = 20 } = req.query;
-
-//     try {
-//         const { appointments, totalPages } = await AppointmentService.getAllAppointments(req.user, page, limit);
-//         const appointmentDtos = appointments.map((appointment) => new AppointmentDto(appointment));
-//         res.status(200).json({ appointments: appointmentDtos, totalPages });
-//     } catch (err) {
-//         next(err);
-//     }
-// }
-
-// static async show(req, res, next) {
-//     try {
-//         const { id } = req.params;
-//         const appointment = await AppointmentService.getAppointmentById(req.user, id);
-//         if (!appointment) {
-//             return res.status(404).json({ message: "Appointment not found" });
-//         }
-//         res.status(200).json(new AppointmentDto(appointment));
-//     } catch (err) {
-//         next(err);
-//     }
-// }

@@ -78,6 +78,53 @@
             "duration": 30,
             "description": "Strzyżenie dzieci do lat 12"
         }
-    ]
+    ],
+
+    "adminPanel": {
+        "title": "Panel Administratora",
+        "description": "Zarządzaj użytkownikami, rezerwacjami i usługami.",
+        "manageUsers": "Zarządzaj Uzytkownikami",
+        "manageClients": "Zarządzaj Klientami",
+        "manageEmployees": "Zarządzaj Pracownikami",
+        "manageServices": "Zarządzaj Usługami",
+        "manageAppointments": "Zarządzaj Wizytami",
+        "manageServiceAssignments": "Zarządzaj Przypisaniem Usług"
+    },
+    "clientPanel": {
+        "title": "Panel Klienta",
+        "description": "Zarządzaj swoimi danymi i wizytami.",
+        "editData": "Edytuj Dane",
+        "addAppointment": "Dodaj Wizytę",
+        "yourAppointments": "Twoje Wizyty",
+        "noAppointments": "Nie masz jeszcze żadnych wizyt.",
+        "employee": "Pracownik",
+        "service": "Usługa",
+        "date": "Data",
+        "notes": "Notatki",
+        "cancel": "Anuluj",
+        "save": "Zapisz",
+        "confirmDelete": "Czy na pewno chcesz usunąć tę wizytę?",
+        "add": "Dodaj",
+        "cancelButton": "Anuluj",
+        "edit": "Edytuj"
+    },
+    "employeePanel": {
+        "title": "Panel Pracownika",
+        "description": "Zarządzaj swoimi danymi i przypisanymi usługami.",
+        "editData": "Edytuj Dane",
+        "yourAppointments": "Twoje Wizyty",
+        "noAppointments": "Nie masz jeszcze żadnych wizyt.",
+        "client": "Klient",
+        "service": "Usługa",
+        "date": "Data",
+        "notes": "Notatki",
+        "assignments": "Przypisane Usługi",
+        "save": "Zapisz",
+        "cancel": "Anuluj",
+        "confirmDelete": "Czy na pewno chcesz usunąć to przypisanie usługi?",
+        "name": "Imię i Nazwisko",
+        "phone": "Telefon",
+        "specialisation": "Specjalizacja"
+    }
 
 }

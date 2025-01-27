@@ -21,8 +21,16 @@ class EmployeeRepository {
         }
     }
 
+    static async getEmployeeByUserId(userId) {
+            const query = `SELECT * FROM employees WHERE user_id = ?`;
+            const [rows] = await db.execute(query, [userId]);
+    
+            if (rows.length === 0) {
+                return null;
+            }
+            return rows[0];
+        }
 
-    //nie dziala honestly
     static async createEmployee({ name, phone, specialisation, userId }) {
         try {
             const [result] = await db.query(
@@ -35,54 +43,6 @@ class EmployeeRepository {
         }
     }
 
-
-// jakies dziwne create employee
-    // static async createEmployee({ name, email, phone, role, userId }) {
-    //     const connection = await db.getConnection();
-    //     try {
-    //         await connection.beginTransaction();
-
-    //         // Dodanie pracownika do tabeli employees
-    //         const [result] = await connection.query(
-    //             "INSERT INTO employees (name, email, phone, role, user_id) VALUES (?, ?, ?, ?, ?)",
-    //             [name, email, phone, role, userId]
-    //         );
-
-    //         // Aktualizacja roli użytkownika w tabeli users
-    //         await connection.query(
-    //             "UPDATE users SET role = 'employee' WHERE id = ?",
-    //             [userId]
-    //         );
-
-    //         await connection.commit();
-
-    //         return { id: result.insertId, name, email, phone, role, userId };
-    //     } catch (error) {
-    //         await connection.rollback();
-    //         console.error("Error creating employee:", error.message);
-    //         throw new Error("Database error: Unable to create employee.");
-    //     } finally {
-    //         connection.release();
-    //     }
-    // }
-
-    // chyba pierwsza dzialajace, ale zwraca pusta tablice
-    // static async updateEmployee(id, { name, email, phone, role }) {
-    //     try {
-    //         await db.query(
-    //             "UPDATE employees SET name = ?, email = ?, phone = ?, role = ? WHERE id = ?",
-    //             [name, email, phone, role, id]
-    //         );
-    //         return true;
-    //     } catch (error) {
-    //         throw new Error("Database error: Unable to update employee.");
-    //     }
-    // }
-
-
-
-
-// drugie dzialajace ale problem z user id aktualizacja nie dziala
     static async updateEmployee(id, { name, phone, specialisation }) {
         try {
             const [result] = await db.query(
@@ -102,10 +62,6 @@ class EmployeeRepository {
             throw new Error("Database error: Unable to update employee.");
         }
     }
-
-
-
-
 
     static async deleteEmployee(employeeId) {
         try {

@@ -6,6 +6,7 @@ const router = express.Router();
 
 router.get("/", authenticateToken, EmployeeController.getAll); 
 router.get("/:id", authenticateToken, EmployeeController.getById); 
+router.get("/user/:userId", authenticateToken, EmployeeController.getByUserId);
 
 router.post("/", authenticateToken, EmployeeController.create); 
 router.put("/:id", authenticateToken, EmployeeController.update); 

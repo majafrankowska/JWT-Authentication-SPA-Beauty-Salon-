@@ -78,6 +78,54 @@
             "duration": 30,
             "description": "Haircut for children under 12 years old"
         }
-    ]
+    ],
+    
+        "adminPanel": {
+            "title": "Admin Panel",
+            "description": "Manage users, appointments, and services.",
+            "manageUsers": "Manage Users",
+            "manageClients": "Manage Clients",
+            "manageEmployees": "Manage Employees",
+            "manageServices": "Manage Services",
+            "manageAppointments": "Manage Appointments",
+            "manageServiceAssignments": "Manage Service Assignments"
+        },
+        "clientPanel": {
+            "title": "Client Panel",
+            "description": "Manage your data and appointments.",
+            "editData": "Edit Data",
+            "addAppointment": "Add Appointment",
+            "yourAppointments": "Your Appointments",
+            "noAppointments": "You have no appointments yet.",
+            "employee": "Employee",
+            "service": "Service",
+            "date": "Date",
+            "notes": "Notes",
+            "cancel": "Cancel",
+            "save": "Save",
+            "confirmDelete": "Are you sure you want to cancel this appointment?",
+            "add": "Add",
+            "cancelButton": "Cancel",
+            "edit": "Edit"
+        },
+        "employeePanel": {
+            "title": "Employee Panel",
+            "description": "Manage your data and assigned services.",
+            "editData": "Edit Data",
+            "yourAppointments": "Your Appointments",
+            "noAppointments": "You have no appointments yet.",
+            "client": "Client",
+            "service": "Service",
+            "date": "Date",
+            "notes": "Notes",
+            "assignments": "Assigned Services",
+            "save": "Save",
+            "cancel": "Cancel",
+            "confirmDelete": "Are you sure you want to remove this service assignment?",
+            "name": "Name",
+            "phone": "Phone",
+            "specialisation": "Specialisation"
+        }
+    
 
 }

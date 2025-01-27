@@ -12,6 +12,7 @@ apiService.interceptors.request.use((config) => {
     if (token) {
         config.headers.Authorization = `Bearer ${token}`;
     }
+    
     return config;
 }, (error) => {
     return Promise.reject(error);
@@ -82,15 +83,6 @@ export default {
         }
     },
 
-        // getClientByUserId: async (userId) => {
-        //     try {
-        //         const response = await apiService.get(`/clients/user/${userId}`);
-        //         return response.data;
-        //     } catch (error) {
-        //         console.error(`Error fetching client by user ID ${userId}:`, error);
-        //         throw error;
-        //     }
-        // },
 
     getClientByUserId: async (userId) => {
         try {
@@ -102,8 +94,6 @@ export default {
         }
     },
     
-
-
     getClientById: async (id) => {
         try {
             const response = await apiService.get(`/clients/${id}`);
@@ -114,12 +104,46 @@ export default {
         }
     },
 
-    updateClient: async (id, data) => {
+
+    updateClient: async (clientId, data) => {
+        let userId;
         try {
-            const response = await apiService.put(`/clients/${id}`, data);
+            const token = localStorage.getItem('token');
+            userId = localStorage.getItem('userId');
+
+            if (!token) {
+                throw new Error('No authorization token found');
+            }
+
+            if (!userId) {
+                throw new Error('User ID not found in local storage');
+            }
+
+            const numericClientId = clientId ? parseInt(clientId, 10) : null;
+            const numericUserId = parseInt(userId, 10);
+
+            if (!numericClientId) {
+                throw new Error('Client ID is missing or invalid');
+            }
+
+            console.log("Sending request to update client with ID:", numericClientId, " by user ID:", numericUserId);
+
+
+            const response = await axios.put(
+                `http://localhost:3000/api/clients/${numericClientId}`,  
+                JSON.stringify(data),
+                {
+                    headers: {
+                        Authorization: `Bearer ${token}`,
+                        'Content-Type': 'application/json',
+                    }
+                }
+            );
+
+            console.log(`Client with ID ${numericClientId} updated by user ID ${numericUserId}`);
             return response.data;
         } catch (error) {
-            console.error(`Error updating client with ID ${id}:`, error);
+            console.error(`apiService Error updating client with ID ${clientId} by user ${userId}:`, error);
             throw error;
         }
     },
@@ -139,6 +163,16 @@ export default {
             return response.data;
         } catch (error) {
             console.error('Error fetching employees:', error);
+            throw error;
+        }
+    },
+    
+    getEmployeeByUserId: async (userId) => {
+        try {
+            const response = await apiService.get(`/employees/user/${userId}`);
+            return response.data;
+        } catch (error) {
+            console.error(`Error fetching employee by user ID ${userId}:`, error);
             throw error;
         }
     },
@@ -261,14 +295,16 @@ export default {
         }
     },
 
-    deleteAppointment: async (id) => {
+    deleteAppointment: async (id, data) => {
         try {
-            await apiService.delete(`/appointments/${id}`);
+            const response = await apiService.delete(`/appointments/${id}`, data);
+            return response.data;
         } catch (error) {
             console.error(`Error deleting appointment with ID ${id}:`, error);
             throw error;
         }
     },
+    
     getAppointmentsByClient: async (clientId) => {
         try {
             const response = await apiService.get(`/appointments/client/${clientId}`);

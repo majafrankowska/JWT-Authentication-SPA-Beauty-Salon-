@@ -4,7 +4,8 @@ class EmployeeDto {
         this.name = employee.name;
         this.phone = employee.phone;
         this.specialisation = employee.specialisation;
-        this.userId = employee.user_id;
+        this.userId = employee.user_id || employee.userId;  
+
     }
 }
 

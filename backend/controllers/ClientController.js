@@ -17,34 +17,6 @@ const ClientController = {
         }
     },
 
-    // async getByUserId(req, res, next) {
-    //     try {
-    //         const client = await ClientService.getClientByUserId(req.params.userId);
-    //         if (!client) {
-    //             return res.status(404).json({ message: "Client not found" });
-    //         }
-    //         const clientDto = new ClientDto(client);
-    //         res.status(200).json(clientDto);
-    //     } catch (error) {
-    //         next(error);
-    //     }
-    // },
-
-    // async getByUserId(req, res, next) {
-    //     try {
-    //         const { userId } = req.params;
-    //         console.log(`Fetching client with userId: ${userId}`);
-    //         const client = await ClientService.getClientByUserId(userId);
-    //         if (!client) {
-    //             return res.status(404).json({ message: "Client not found" });
-    //         }
-    //         res.status(200).json(client);
-    //     } catch (error) {
-    //         console.error("Error in getByUserId:", error);
-    //         next(error);
-    //     }
-    // },
-
 
     async getByUserId (req, res, next) {
         try {

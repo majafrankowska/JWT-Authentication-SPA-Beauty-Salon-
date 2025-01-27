@@ -49,20 +49,6 @@ class AppointmentService {
         return new AppointmentDto(appointment);
     }
 
-
-    // static async getAppointmentsByClient(user, clientId) {
-    //     if (user.role === "client" && user.userId !== clientId) {
-    //         throw new UnauthorizedError("You can only view your own appointments.");
-    //     }
-
-    //     const appointments = await AppointmentRepository.getAppointmentsByClientId(clientId);
-    //     if (!appointments.length) {
-    //         throw new NotFoundError("No appointments found for this client.");
-    //     }
-
-    //     return appointments.map(app => new AppointmentDto(app));
-    // }
-
     static async getAppointmentsByClient(user, clientId) {
         const client = await ClientRepository.getClientByUserId(user.userId);
         if (!client) {
@@ -83,7 +69,12 @@ class AppointmentService {
 
 
     static async getAppointmentsByEmployee(user, employeeId) {
-        if (user.role === "employee" && user.userId !== employeeId) {
+        const employee = await EmployeeRepository.getEmployeeByUserId(user.userId);
+        if (!employee) {
+            throw new NotFoundError("Employee profile not found for this user.");
+        }
+
+        if (employee.id !== employeeId) {
             throw new UnauthorizedError("You can only view your own appointments.");
         }
 
@@ -94,8 +85,6 @@ class AppointmentService {
 
         return appointments.map(app => new AppointmentDto(app));
     }
-
-
 
     static async createAppointment(user, data) {
         this._checkAccess(user, ["admin", "client"]);
@@ -129,20 +118,19 @@ class AppointmentService {
         return updated;
     }
 
-    static async deleteAppointment(user, appointmentId) {
+    static async deleteAppointment(user, appointmentId, clientId) {
         this._checkAccess(user, ["admin", "client"]);
 
-        if (user.role === "client") {
-            const appointment = await AppointmentRepository.getAppointmentById(appointmentId);
-            if (appointment.clientId !== user.userId) {
-                throw new UnauthorizedError("You can only cancel your own appointments.");
-            }
-        }
+        console.log("Deleting appointment:", appointmentId);
+        console.log("Authenticated user:", user);
+        console.log("Client ID from request:", clientId);
 
         const deleted = await AppointmentRepository.deleteAppointment(appointmentId);
         if (!deleted) {
             throw new NotFoundError("Appointment not found.");
         }
+
+        console.log(`Appointment ${appointmentId} deleted successfully.`);
         return true;
     }
 
@@ -173,5 +161,4 @@ class AppointmentService {
 }
 
 module.exports = AppointmentService;
-
 

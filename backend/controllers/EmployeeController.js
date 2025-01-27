@@ -18,6 +18,23 @@ class EmployeeController {
         }
     }
 
+    static async getByUserId(req, res, next) {
+        try {
+            const { userId } = req.params;
+            const user = req.user;
+
+            const employee = await EmployeeService.getEmployeeByUserId(user, userId);
+
+            if (!employee) {
+                return res.status(404).json({ message: "Employee not found" });
+            }
+
+            res.status(200).json(employee);
+        } catch (error) {
+            next(error);
+        }
+    }
+
     static async getById(req, res, next) {
         try {
             const { id } = req.params;
@@ -60,118 +77,3 @@ class EmployeeController {
 module.exports = EmployeeController;
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-//     static async getById(req, res) {
-//         try {
-//             const employee = await EmployeeService.getEmployeeById(req.params.id);
-//             res.json(employee);
-//         } catch (error) {
-//             res.status(404).json({ message: error.message });
-//         }
-//     }
-
-
-//     static async create(req, res) {
-//         try {
-//             const newEmployee = await EmployeeService.createEmployee(req.body);
-//             res.status(201).json(newEmployee);
-//         } catch (error) {
-//             res.status(400).json({ message: error.message });
-//         }
-//     }
-
-//     static async update(req, res) {
-//         try {
-//             const updatedEmployee = await EmployeeService.updateEmployee(req.params.id, req.body);
-//             res.json(updatedEmployee);
-//         } catch (error) {
-//             res.status(400).json({ message: error.message });
-//         }
-//     }
-
-//     static async delete(req, res) {
-//         try {
-//             const result = await EmployeeService.deleteEmployee(req.params.id);
-//             res.json(result);
-//         } catch (error) {
-//             res.status(400).json({ message: error.message });
-//         }
-//     }
-// }
-
-// module.exports = EmployeeController;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    // static async index(req, res, next) {
-    //     const { page = 1, limit = 20 } = req.query;
-
-    //     try {
-    //         const { employees, totalPages } = await EmployeeService.getAllEmployees(req.user, page, limit);
-
-    //         const employeeDtos = employees.map(employee => new EmployeeDto(employee));
-
-    //         res.status(200).json({ employees: employeeDtos, totalPages });
-    //     } catch (error) {
-    //         next(error);
-    //     }
-    // }
-    
-    // static async show(req, res) {
-    //     try {
-    //         const employee = await EmployeeService.getEmployeeById(req.params.id);
-    //         res.json(employee);
-    //     } catch (error) {
-    //         res.status(404).json({ message: error.message });
-    //     }
-    // }
-
-    // static async index(req, res) {
-    //     const { page = 1, limit = 20 } = req.query;
-
-    //     try {
-    //         const { employees, totalPages } = await EmployeeService.getAllEmployees(page, limit);
-    //         res.status(200).json({ employees, totalPages });
-    //     } catch (error) {
-    //         res.status(400).json({ message: error.message });
-    //     }
-    // }

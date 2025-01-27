@@ -15,10 +15,19 @@ class EmployeeServiceRepository {
     }
 
     static async assignServiceToEmployee(employeeId, serviceId) {
+
+        const [existing] = await db.query(
+            "SELECT * FROM employee_services WHERE employee_id = ? AND service_id = ?",
+            [employeeId, serviceId]
+        );
+        if (existing.length > 0) {
+            throw new Error("This service is already assigned to the employee.");
+        }
         const [result] = await db.query(
             "INSERT INTO employee_services (employee_id, service_id) VALUES (?, ?)",
             [employeeId, serviceId]
         );
+        
         return { id: result.insertId, employeeId, serviceId };
     }
 

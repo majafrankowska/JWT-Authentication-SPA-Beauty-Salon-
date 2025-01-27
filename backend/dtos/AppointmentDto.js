@@ -19,11 +19,3 @@ class AppointmentDto {
 
 module.exports = AppointmentDto;
 
-// this.clientName = appointment.clientName;
-// this.clientEmail = appointment.clientEmail;
-// this.employeeName = appointment.employeeName;
-// this.employeeEmail = appointment.employeeEmail;
-// this.serviceName = appointment.serviceName;
-// this.servicePrice = appointment.servicePrice;
-// this.serviceDuration = appointment.serviceDuration;
-// this.serviceDescription = appointment.serviceDescription;

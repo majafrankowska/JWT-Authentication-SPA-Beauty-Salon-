@@ -15,7 +15,13 @@ class ClientService {
     }
 
     static async getAllClients(user, page, limit) {
-        this._checkAccess(user, ["admin"]);
+        if (!user || !user.role) {
+            throw new UnauthorizedError("User authentication required.");
+        }
+
+        if (!["admin", "employee"].includes(user.role)) {
+            throw new UnauthorizedError("Access denied. Only admins and employees are allowed.");
+        }
 
         const offset = (page - 1) * limit;
         const query = `SELECT * FROM clients LIMIT ? OFFSET ?`;
@@ -44,18 +50,7 @@ class ClientService {
         return client;
     }
 
-    // static async getClientByUserId(user, userId) {
-    //     if (user.role !== "admin" && user.userId !== parseInt(userId, 10)) {
-    //         throw new UnauthorizedError("You can only view your own data.");
-    //     }
 
-    //     const client = await ClientRepository.getClientByUserId(userId);
-    //     if (!client) {
-    //         throw new NotFoundError("Client not found.");
-    //     }
-
-    //     return client;
-    // }
 
     static async getClientByUserId(user, userId) {
         if (user.role !== "admin" && user.userId !== parseInt(userId, 10)) {
@@ -70,20 +65,39 @@ class ClientService {
         return client;
     }
 
+    static async updateClient(user, userId, data) {
+        console.log("Updating client with:", { user, userId, data });
 
-    static async updateClient(user, id, data) {
-        this._checkAccess(user, ["admin"]);
+        if (!user) {
+            console.error("Unauthorized: No user found in request");
+            throw new UnauthorizedError("Unauthorized: No user found in request");
+        }
 
-        if (user.role !== "admin" && user.userId !== id) {
+        console.log("User details:", { userIdFromToken: user.userId, role: user.role });
+
+        const targetUserId = data.user_id;
+
+        if (user.role !== "admin" && user.userId !== parseInt(targetUserId, 10)) {
+            console.error(`Authorization failed. User ID: ${user.userId}, Role: ${user.role}, Target ID: ${targetUserId}`);
             throw new UnauthorizedError("You can only update your own data.");
         }
 
-        const updated = await ClientRepository.updateClient(id, data);
-        if (!updated) {
-            throw new NotFoundError("Client not found.");
+        console.log("Authorization successful, proceeding to update...");
+
+        try {
+            const updated = await ClientRepository.updateClient(targetUserId, data);
+            if (!updated) {
+                console.error(`Client with ID ${targetUserId} not found.`);
+                throw new NotFoundError("Client not found.");
+            }
+            console.log(`Client with ID ${targetUserId} updated successfully.`);
+            return updated;
+        } catch (error) {
+            console.error("Error updating client:", error);
+            throw new Error("Internal server error occurred while updating client.");
         }
-        return updated;
     }
+
 
     static async deleteClient(user, id) {
         if (user.role !== "admin" && user.userId !== id) {

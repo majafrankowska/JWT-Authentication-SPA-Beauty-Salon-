@@ -4,7 +4,7 @@ class ClientDto {
         this.name = client.name;
         this.phone = client.phone;
         this.address = client.address;
-        this.userId = client.user_id;
+        this.userId = client.user_id || client.userId;  
     }
 }
 
